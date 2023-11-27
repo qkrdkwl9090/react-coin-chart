@@ -41,6 +41,29 @@ const OverviewItem = styled.div`
 const Description = styled.p`
   margin: 20px 0px;
 `;
+
+const Tabs = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 25px 0px;
+  gap: 10px;
+`;
+
+const Tab = styled.span<{ isActive: boolean }>`
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 7px 0px;
+  border-radius: 10px;
+  color: ${(props) =>
+    props.isActive ? props.theme.accentColor : props.theme.textColor};
+  a {
+    display: block;
+  }
+`;
+
 // infoData
 interface InfoData {
   id: string;
@@ -143,6 +166,8 @@ function Coin() {
   const [loading, setLoading] = useState<boolean>(true);
   const { state } = useLocation();
   const { coinId } = useParams<{ coinId: string }>();
+  const priceMatch = useLocation().pathname.includes("price");
+  const chartMatch = useLocation().pathname.includes("chart");
   useEffect(() => {
     (async () => {
       const infoData = await (
@@ -192,6 +217,15 @@ function Coin() {
               <span>{priceInfo?.max_supply}</span>
             </OverviewItem>
           </Overview>
+
+          <Tabs>
+            <Tab isActive={chartMatch !== null}>
+              <a href={`/${coinId}/chart`}>Chart</a>
+            </Tab>
+            <Tab isActive={priceMatch !== null}>
+              <a href={`/${coinId}/price`}>Price</a>
+            </Tab>
+          </Tabs>
           <Outlet />
         </>
       )}
