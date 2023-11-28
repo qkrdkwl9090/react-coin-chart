@@ -39,6 +39,9 @@ function Chart() {
               mode: "dark",
             },
             chart: {
+              animations: {
+                enabled: false,
+              },
               height: 300,
               width: 500,
               toolbar: {
