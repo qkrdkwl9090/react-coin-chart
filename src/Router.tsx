@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Coins from "./routes/Coins";
 import Coin from "./routes/Coin";
-import Root from "./Root";
+import App from "./App";
 import Chart from "./routes/Chart";
 import Price from "./routes/Price";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <App />,
     children: [
       {
         path: "",

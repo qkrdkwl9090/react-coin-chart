@@ -1,5 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { HelmetProvider } from "react-helmet-async";
+import { darkTheme, lightTheme } from "./theme";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./atoms";
+import DarkModeToggleButton from "./components/DarkModeToggleButton";
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -66,11 +71,15 @@ a {
 `;
 
 function App() {
+  const isDark = useRecoilValue(isDarkAtom);
   return (
-    <>
-      <GlobalStyle />
-      <Outlet />
-    </>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <HelmetProvider>
+        <GlobalStyle />
+        <Outlet />
+      </HelmetProvider>
+      <DarkModeToggleButton />
+    </ThemeProvider>
   );
 }
 export default App;
