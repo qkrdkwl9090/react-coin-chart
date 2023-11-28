@@ -52,7 +52,7 @@ const Tabs = styled.div`
   gap: 10px;
 `;
 
-const Tab = styled.span<{ isActive: boolean }>`
+const Tab = styled.span<{ $isActive: boolean }>`
   text-align: center;
   text-transform: uppercase;
   font-size: 12px;
@@ -61,7 +61,7 @@ const Tab = styled.span<{ isActive: boolean }>`
   padding: 7px 0px;
   border-radius: 10px;
   color: ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
+    props.$isActive ? props.theme.accentColor : props.theme.textColor};
   a {
     padding: 7px 0px;
     display: block;
@@ -220,12 +220,11 @@ function Coin() {
               <span>{tickersData?.max_supply}</span>
             </OverviewItem>
           </Overview>
-
           <Tabs>
-            <Tab isActive={chartMatch !== null}>
+            <Tab $isActive={!!chartMatch}>
               <a href={`/${coinId}/chart`}>Chart</a>
             </Tab>
-            <Tab isActive={priceMatch !== null}>
+            <Tab $isActive={!!priceMatch}>
               <a href={`/${coinId}/price`}>Price</a>
             </Tab>
           </Tabs>
