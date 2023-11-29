@@ -103,7 +103,7 @@ Error generating stack: `+d.message+`
 `,zE=$t.img`
   width: 25px;
   height: 25px;
-`;function FE(){const{isLoading:e,data:t}=Xc({queryKey:["coins"],queryFn:ZC});return Ne.jsxs(_E,{children:[Ne.jsx(Hb,{children:Ne.jsx("title",{children:"Coins"})}),Ne.jsx(ME,{children:Ne.jsx(OE,{children:"Coins"})}),e?Ne.jsx(DE,{children:"Loading..."}):Ne.jsx(IE,{children:t==null?void 0:t.slice(0,100).map(r=>Ne.jsx(NE,{children:Ne.jsxs($C,{to:{pathname:`/${r.id}`},state:{name:r.name},children:[Ne.jsx(zE,{src:`https://coinicons-api.vercel.app/api/icon/${r.symbol.toLowerCase()}`,alt:`${r.symbol} icon`}),r.name," →"]})},r.id))})]})}const BE=$t.div`
+`;function FE(){const{isLoading:e,data:t}=Xc({queryKey:["coins"],queryFn:ZC});return Ne.jsxs(_E,{children:[Ne.jsx(Hb,{children:Ne.jsx("title",{children:"Coins"})}),Ne.jsx(ME,{children:Ne.jsx(OE,{children:"Coins"})}),e?Ne.jsx(DE,{children:"Loading..."}):Ne.jsx(IE,{children:t==null?void 0:t.slice(0,100).map(r=>Ne.jsx(NE,{children:Ne.jsxs($C,{to:{pathname:`/react_coin_chart/${r.id}`},state:{name:r.name},children:[Ne.jsx(zE,{src:`https://coinicons-api.vercel.app/api/icon/${r.symbol.toLowerCase()}`,alt:`${r.symbol} icon`}),r.name," →"]})},r.id))})]})}const BE=$t.div`
   padding: 0 10px;
   max-width: 480px;
   margin: 0 auto;
